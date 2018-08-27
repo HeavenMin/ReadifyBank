@@ -12,6 +12,11 @@ namespace ReadifyBank
             base.accountNumber = "SV-" + SVAccount.getUniqueSVaccountNumber.ToString("D6");
         }
 
+        public SVAccount(string customerName, DateTimeOffset openedDate) : base(customerName, openedDate)
+        {
+            base.accountNumber = "SV-" + SVAccount.getUniqueSVaccountNumber.ToString("D6");
+        }
+
         private static Int32 getUniqueSVaccountNumber
         {
             get

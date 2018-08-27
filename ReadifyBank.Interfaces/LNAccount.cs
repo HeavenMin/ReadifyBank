@@ -12,6 +12,11 @@ namespace ReadifyBank
             base.accountNumber = "LN-" + LNAccount.getUniqueLNAccountNumber.ToString("D6");
         }
 
+        public LNAccount(string customerName, DateTimeOffset openedDate) : base(customerName, openedDate)
+        {
+            base.accountNumber = "LN-" + LNAccount.getUniqueLNAccountNumber.ToString("D6");
+        }
+
         private static Int32 getUniqueLNAccountNumber
         {
             get

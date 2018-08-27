@@ -17,6 +17,13 @@ namespace ReadifyBank
             this.openedDate = DateTimeOffset.Now.LocalDateTime;    //Local time when opening an account
         }
 
+        public Account(string customerName, DateTimeOffset openedDate)
+        {
+            this.customerName = customerName;
+            this.balance = 0;
+            this.openedDate = openedDate;
+        }
+
         public DateTimeOffset OpenedDate
         {
             get

@@ -10,15 +10,54 @@ namespace ReadifyBank
         private decimal amount;
         private decimal balance;
         private string description;
+
+        public StatementRow(IAccount account, decimal amount, string description)
+        {
+            this.account = account;
+            this.amount = amount;
+            this.description = description;
+            this.balance += amount;
+            this.date = DateTimeOffset.Now.LocalDateTime;
+
+        }
         
-        public IAccount Account => throw new NotImplementedException();
+        public IAccount Account
+        {
+            get
+            {
+                return account;
+            }
+        }
 
-        public DateTimeOffset Date => throw new NotImplementedException();
+        public DateTimeOffset Date
+        {
+            get
+            {
+                return date;
+            }
+        }
+        public decimal Amount
+        {
+            get
+            {
+                return amount;
+            }
+        }
 
-        public decimal Amount => throw new NotImplementedException();
+        public decimal Balance
+        {
+            get
+            {
+                return balance;
+            }
+        }
 
-        public decimal Balance => throw new NotImplementedException();
-
-        public string Description => throw new NotImplementedException();
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+        }
     }
 }

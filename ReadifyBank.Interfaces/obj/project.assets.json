@@ -687,11 +687,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\heaven\\Desktop\\Readify - Graduate Puzzle\\ReadifyBank.Interfaces\\ReadifyBank.Interfaces.csproj",
+      "projectUniqueName": "C:\\Users\\heaven\\Projects\\ReadifyBank\\ReadifyBank.Interfaces\\ReadifyBank.Interfaces.csproj",
       "projectName": "ReadifyBank.Interfaces",
-      "projectPath": "c:\\Users\\heaven\\Desktop\\Readify - Graduate Puzzle\\ReadifyBank.Interfaces\\ReadifyBank.Interfaces.csproj",
+      "projectPath": "C:\\Users\\heaven\\Projects\\ReadifyBank\\ReadifyBank.Interfaces\\ReadifyBank.Interfaces.csproj",
       "packagesPath": "C:\\Users\\heaven\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\heaven\\Desktop\\Readify - Graduate Puzzle\\ReadifyBank.Interfaces\\obj\\",
+      "outputPath": "C:\\Users\\heaven\\Projects\\ReadifyBank\\ReadifyBank.Interfaces\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

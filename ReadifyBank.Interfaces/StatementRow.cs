@@ -25,7 +25,7 @@ namespace ReadifyBank
             this.account = account;
             this.amount = amount;
             this.description = description;
-            this.balance = account.Balance + amount;    // balance after deposit or withdrawal
+            this.balance = account.Balance;    // balance after deposit or withdrawal
             this.date = DateTimeOffset.Now.LocalDateTime;
 
         }
@@ -35,7 +35,7 @@ namespace ReadifyBank
             this.account = account;
             this.amount = amount;
             this.description = description;
-            this.balance = account.Balance + amount;
+            this.balance = account.Balance;
             this.date = date;
         }
         

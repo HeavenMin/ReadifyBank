@@ -119,7 +119,7 @@ namespace ReadifyBank
             transactionLog.Add(transaction);
         }
 
-        void PerformTransfer(IAccount from, IAccount to, decimal amount, string description)
+        public void PerformTransfer(IAccount from, IAccount to, decimal amount, string description)
         {
             if (isBalanceEnough(from.Balance, amount))
             {
@@ -137,7 +137,7 @@ namespace ReadifyBank
             transactionLog.Add(to_transaction);
         }
 
-        void PerformTransfer(IAccount from, IAccount to, decimal amount, string description, DateTimeOffset transferDate)
+        public void PerformTransfer(IAccount from, IAccount to, decimal amount, string description, DateTimeOffset transferDate)
         {
             if (isBalanceEnough(from.Balance, amount))
             {
@@ -160,9 +160,38 @@ namespace ReadifyBank
             return account.Balance;
         }
 
-        decimal CalculateInterestToDate(IAccount account, DateTimeOffset toDate)
+        public decimal CalculateInterestToDate(IAccount account, DateTimeOffset toDate)
         {
+            DateTimeOffset today = DateTimeOffset.Now.Date;
+            int interestDays = (toDate - today).Days;
+            if (interestDays >= 1)
+            {
+                if (account.GetType() == typeof(LNAccount))
+                {
+                    return LN_ANNUAL_INTEREST_RATE / 365 * interestDays * account.Balance;
+                } else if (account.GetType() == typeof(SVAccount))
+                {
+                    return SV_MONTHLY_INTEREST_RATE * 12 / 365 * interestDays * account.Balance;
+                } else {
+                    Console.Error.WriteLine("Invalid account.");
+                    return 0m;
+                }
+            } else {
+                Console.Error.WriteLine("Invalid date.");
+                return 0m;
+            }
+        }
 
+        public IEnumerable<IStatementRow> GetMiniStatement(IAccount account)
+        {
+            List<IStatementRow> a = new List<IStatementRow>();
+            return a;
+        }
+
+        public IEnumerable<IStatementRow> CloseAccount(IAccount account, DateTimeOffset closeDate)
+        {
+            List<IStatementRow> a = new List<IStatementRow>();
+            return a;
         }
 
 

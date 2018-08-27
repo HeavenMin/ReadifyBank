@@ -1,8 +1,15 @@
+/*
+  Author: Min Gao
+  Date: 08/2018
+  Versin: 1
+  File Name: SVAccount.cs
+  Purpose: Readify Bank Saving Account
+*/
+
 using System;
 
 namespace ReadifyBank
 {
-    // Saving Account
     class SVAccount : Account
     {
         private static Int32 svAccountNumberFactory = 0;

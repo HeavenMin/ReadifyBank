@@ -1,8 +1,15 @@
+/*
+  Author: Min Gao
+  Date: 08/2018
+  Versin: 1
+  File Name: LNAccount.cs
+  Purpose: Readify Bank Home Loan Account
+*/
+
 using System;
 
 namespace ReadifyBank
 {
-    //Home Loan Account
     class LNAccount : Account
     {
         private static Int32 lnAccountNumberFactory = 0;

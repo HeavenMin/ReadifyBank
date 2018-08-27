@@ -1,3 +1,12 @@
+/*
+  Author: Min Gao
+  Date: 08/2018
+  Versin: 1
+  File Name: StatementRow.cs
+  Purpose: Statement Row represents a single row in the bank statement
+           It represents a single transaction on account
+*/
+
 using System;
 using ReadifyBank.Interfaces;
 
@@ -6,7 +15,7 @@ namespace ReadifyBank
     public class StatementRow : Interfaces.IStatementRow
     {
         private IAccount account;
-        private DateTimeOffset date;
+        private DateTimeOffset date;    //Date and time of the transaction
         private decimal amount;
         private decimal balance;
         private string description;
@@ -16,9 +25,18 @@ namespace ReadifyBank
             this.account = account;
             this.amount = amount;
             this.description = description;
-            this.balance += amount;
+            this.balance = account.Balance + amount;    // balance after deposit or withdrawal
             this.date = DateTimeOffset.Now.LocalDateTime;
 
+        }
+
+        public StatementRow(IAccount account, decimal amount, string description, DateTimeOffset date)
+        {
+            this.account = account;
+            this.amount = amount;
+            this.description = description;
+            this.balance = account.Balance + amount;
+            this.date = date;
         }
         
         public IAccount Account

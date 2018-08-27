@@ -1,5 +1,14 @@
-﻿using System;
+﻿/*
+  Author: Min Gao
+  Date: 08/2018
+  Versin: 1
+  File Name: Account.cs
+  Purpose: Test
+*/
+
+using System;
 using ReadifyBank.Interfaces;
+using System.Diagnostics;
 
 namespace ReadifyBank
 {

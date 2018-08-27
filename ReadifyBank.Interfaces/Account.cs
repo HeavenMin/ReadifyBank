@@ -1,3 +1,11 @@
+/*
+  Author: Min Gao
+  Date: 08/2018
+  Versin: 1
+  File Name: Account.cs
+  Purpose: Readify Bank Account
+*/
+
 using System;
 using ReadifyBank.Interfaces;
 
@@ -5,10 +13,10 @@ namespace ReadifyBank
 {
     class Account: Interfaces.IAccount
     {
-        private DateTimeOffset openedDate;
+        private DateTimeOffset openedDate;    //the date when the account was opened
         private string customerName;
         protected string accountNumber;
-        private decimal balance;
+        private decimal balance;    // Current account balance
 
         public Account(string customerName)
         {
@@ -55,5 +63,9 @@ namespace ReadifyBank
                 return accountNumber;
             }
         }
+
+        public void deposit(decimal amount) => this.balance += amount;
+
+        public void withdrawal(decimal amount) => this.balance -= amount;
     }
 }

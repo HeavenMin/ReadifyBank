@@ -17,7 +17,10 @@ namespace ReadifyBank
         static void Main(string[] args)
         {
             ReadifyBank bank = new ReadifyBank();
-            bank.OpenSavingsAccount("John");
+            IAccount john = bank.OpenSavingsAccount("John");
+            IAccount jack = bank.OpenHomeLoanAccount("Jack");
+            bank.PerformDeposit(john, 100, "deposit 100");
+            Console.WriteLine(bank.CalculateInterestToDate(john, DateTimeOffset.Now.Date.AddDays(31)));
 
         }
     }

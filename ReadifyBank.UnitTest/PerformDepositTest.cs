@@ -25,15 +25,12 @@ namespace ReadifyBank.UnitTest
             Assert.Equal(0, test_bank.TransactionLog.Count);
 
             IAccount john = test_bank.OpenHomeLoanAccount("John");
-            decimal johnBlanceBeforeDeposit = john.Balance;
             test_bank.PerformDeposit(john, -200, "invalid deposit.");
-            decimal johnBalanceAfterDeposit = john.Balance;
-            Assert.Equal(johnBlanceBeforeDeposit, johnBalanceAfterDeposit);
+            Assert.Equal(0, john.Balance);
             Assert.Equal(0, test_bank.TransactionLog.Count);
 
             test_bank.PerformDeposit(john, 200, "deposit 200.");
-            johnBalanceAfterDeposit = john.Balance;
-            Assert.Equal(johnBlanceBeforeDeposit + 200, johnBalanceAfterDeposit);
+            Assert.Equal(200, john.Balance);
             Assert.Same(john, test_bank.TransactionLog.Last().Account);
             Assert.Equal(200, test_bank.TransactionLog.Last().Amount);
             Assert.Equal(john.Balance, test_bank.TransactionLog.Last().Balance);

@@ -168,38 +168,50 @@ namespace ReadifyBank
 
         public void PerformTransfer(IAccount from, IAccount to, decimal amount, string description)
         {
-            if (isBalanceEnough(from.Balance, amount))
+            if (!isAccountExistInSystem(from) || !isAccountExistInSystem(to))
+            {
+                return;
+            }
+            try
             {
                 Account from_account = (Account) from;
                 from_account.withdrawal(amount);
                 Account to_account = (Account) to;
                 to_account.deposit(amount);
-            } else {
-                Console.Error.WriteLine("Transfer failed.");
-                return;
+
+                StatementRow from_transaction = new StatementRow(from, -amount, description);
+                StatementRow to_transaction = new StatementRow(to, amount, description);
+                transactionLog.Add(from_transaction);
+                transactionLog.Add(to_transaction);
             }
-            StatementRow from_transaction = new StatementRow(from, -amount, description);
-            StatementRow to_transaction = new StatementRow(to, amount, description);
-            transactionLog.Add(from_transaction);
-            transactionLog.Add(to_transaction);
+            catch (ArgumentException)
+            {
+                Console.Error.WriteLine("Transfer amount exceeds balance! Transfer failed.");
+            }
         }
 
         public void PerformTransfer(IAccount from, IAccount to, decimal amount, string description, DateTimeOffset transferDate)
         {
-            if (isBalanceEnough(from.Balance, amount))
+            if (!isAccountExistInSystem(from) || !isAccountExistInSystem(to))
+            {
+                return;
+            }
+            try
             {
                 Account from_account = (Account) from;
                 from_account.withdrawal(amount);
                 Account to_account = (Account) to;
                 to_account.deposit(amount);
-            } else {
-                Console.Error.WriteLine("Transfer failed.");
-                return;
+
+                StatementRow from_transaction = new StatementRow(from, -amount, description, transferDate);
+                StatementRow to_transaction = new StatementRow(to, amount, description, transferDate);
+                transactionLog.Add(from_transaction);
+                transactionLog.Add(to_transaction);
             }
-            StatementRow from_transaction = new StatementRow(from, -amount, description, transferDate);
-            StatementRow to_transaction = new StatementRow(to, amount, description, transferDate);
-            transactionLog.Add(from_transaction);
-            transactionLog.Add(to_transaction);
+            catch (ArgumentException)
+            {
+                Console.Error.WriteLine("Transfer amount exceeds balance! Transfer failed.");
+            }
         }
 
         public decimal GetBalance(IAccount account)

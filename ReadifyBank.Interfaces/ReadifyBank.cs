@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 using ReadifyBank.Interfaces;
 
 namespace ReadifyBank
@@ -48,31 +49,47 @@ namespace ReadifyBank
 
         public IAccount OpenHomeLoanAccount(string customerName)
         {
-            IAccount lnCustomer = new LNAccount(customerName);
-            accountList.Add(lnCustomer);
-            return lnCustomer;
+            if (isNameValid(customerName))
+            {
+                IAccount lnCustomer = new LNAccount(customerName);
+                accountList.Add(lnCustomer);
+                return lnCustomer;
+            }
+            return null;
         }
 
         public IAccount OpenHomeLoanAccount(string customerName, DateTimeOffset openDate)
         {
-            IAccount lnCustomer = new LNAccount(customerName, openDate);
-            accountList.Add(lnCustomer);
-            return lnCustomer;
+            if (isNameValid(customerName))
+            {
+                IAccount lnCustomer = new LNAccount(customerName, openDate);
+                accountList.Add(lnCustomer);
+                return lnCustomer;
+            }
+            return null;
 
         }
 
         public IAccount OpenSavingsAccount(string customerName)
         {
-            IAccount svCustomer = new SVAccount(customerName);
-            accountList.Add(svCustomer);
-            return svCustomer;
+            if (isNameValid(customerName))
+            {
+                IAccount svCustomer = new SVAccount(customerName);
+                accountList.Add(svCustomer);
+                return svCustomer;
+            }
+            return null;
         }
 
         public IAccount OpenSavingsAccount(string customerName, DateTimeOffset openDate)
         {
-            IAccount svCustomer = new SVAccount(customerName, openDate);
-            accountList.Add(svCustomer);
-            return svCustomer;
+            if (isNameValid(customerName))
+            {
+                IAccount svCustomer = new SVAccount(customerName, openDate);
+                accountList.Add(svCustomer);
+                return svCustomer;
+            }
+            return null;
         }
 
         public void PerformDeposit(IAccount account, decimal amount, string description)
@@ -225,7 +242,14 @@ namespace ReadifyBank
 
         private bool isNameValid(string customerName)
         {
-            Regex reg = new Regex(@"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$")
+            Regex reg = new Regex(@"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
+            if (reg.Match(customerName).Success)
+            {
+                return true;
+            } else {
+                Console.Error.WriteLine("Invalid customer name.");
+                return false;
+            }
         }
 
     }

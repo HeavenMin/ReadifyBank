@@ -46,6 +46,10 @@ namespace ReadifyBank.UnitTest
                 Assert.Equal(amount , miniStatementForJohn.ToList()[i].Amount);
                 Assert.Equal(johnBalance, miniStatementForJohn.ToList()[i].Balance);
             }
+
+            IEnumerable<IStatementRow> miniStatementForNotExist = test_bank.GetMiniStatement(null);
+            Assert.Null(miniStatementForNotExist);
+
         }
     }
 }

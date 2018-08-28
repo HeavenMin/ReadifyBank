@@ -249,6 +249,10 @@ namespace ReadifyBank
         //get mini statement (last 5 transactions occured on an account)
         public IEnumerable<IStatementRow> GetMiniStatement(IAccount account)
         {
+            if (!isAccountExistInSystem(account))
+            {
+                return null;
+            }
             IEnumerable<IStatementRow> allTransactionsOfAccount = getAllTransactionsOfOneAccount(account);
             if (allTransactionsOfAccount.Count() >= 5)
             {
@@ -259,8 +263,31 @@ namespace ReadifyBank
         }
 
         //close an account and return all transactions happended on the closed account
+        public IEnumerable<IStatementRow> CloseAccount(IAccount account)
+        {
+            if (!isAccountExistInSystem(account))
+            {
+                return null;
+            }
+            if (account.Balance > 0)
+            {
+                string final_withdrawal_description = "Withdraw all the money before closing the account";
+                PerformWithdrawal(account, account.Balance, final_withdrawal_description);
+            }
+            IEnumerable<IStatementRow> all_transactions = getAllTransactionsOfOneAccount(account);
+            accountList.Remove(account);
+            //For the privacy and security of the customer, clear all the information of the customer after closing the account.
+            account = null;
+            return all_transactions;
+        }
+
+        //close an account and return all transactions happended on the closed account
         public IEnumerable<IStatementRow> CloseAccount(IAccount account, DateTimeOffset closeDate)
         {
+            if (!isAccountExistInSystem(account))
+            {
+                return null;
+            }
             if (account.Balance > 0)
             {
                 string final_withdrawal_description = "Withdraw all the money before closing the account";

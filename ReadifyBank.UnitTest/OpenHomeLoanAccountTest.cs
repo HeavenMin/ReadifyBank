@@ -8,6 +8,7 @@
 
 
 using System;
+using System.Linq;
 using ReadifyBank;
 using ReadifyBank.Interfaces;
 using Xunit;
@@ -27,6 +28,13 @@ namespace ReadifyBank.UnitTest
             Assert.Matches("^LN-\\d{6}$", john.AccountNumber);
             Assert.NotEmpty(test_bank.AccountList);
             Assert.Equal(1, test_bank.AccountList.Count);
+
+            //add another 19 saving accont
+            foreach (int i in Enumerable.Range(1,19))
+            {
+                test_bank.OpenSavingsAccount(string.Format("SCVustomer{0}", i));
+            }
+            Assert.Equal(20, test_bank.AccountList.Count);
         }
     }
 }

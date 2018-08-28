@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using ReadifyBank.Interfaces;
 
@@ -20,8 +21,8 @@ namespace ReadifyBank
         // The interest rate for Home loan account is 3.99% annually
         private const decimal LN_ANNUAL_INTEREST_RATE = 0.0399m;
 
-        private IList<IAccount> accountList;
-        private IList<IStatementRow> transactionLog;
+        private IList<IAccount> accountList;    //bank accounts list
+        private IList<IStatementRow> transactionLog;    //transactions log of bank
 
         public ReadifyBank()
         {
@@ -160,6 +161,7 @@ namespace ReadifyBank
             return account.Balance;
         }
 
+        //calculate interest for an account to a specific time
         public decimal CalculateInterestToDate(IAccount account, DateTimeOffset toDate)
         {
             DateTimeOffset today = DateTimeOffset.Now.Date;
@@ -182,18 +184,26 @@ namespace ReadifyBank
             }
         }
 
+        //get mini statement (last 5 transactions occured one an account)
         public IEnumerable<IStatementRow> GetMiniStatement(IAccount account)
         {
-            List<IStatementRow> a = new List<IStatementRow>();
-            return a;
+            return getAllTransactionsOfOneAccount(account).ToList().TakeLast(5);
         }
 
+        //close an account and return all transactions happended on the closed account
         public IEnumerable<IStatementRow> CloseAccount(IAccount account, DateTimeOffset closeDate)
         {
-            List<IStatementRow> a = new List<IStatementRow>();
-            return a;
+            if (account.Balance > 0)
+            {
+                string final_withdrawal_description = "Withdraw all the money before closing the account";
+                PerformWithdrawal(account, account.Balance, final_withdrawal_description, closeDate);
+            }
+            IEnumerable<IStatementRow> all_transactions = getAllTransactionsOfOneAccount(account);
+            accountList.Remove(account);
+            //For the privacy and security of the customer, clear all the information of the customer after closing the account.
+            account = null;
+            return all_transactions;
         }
-
 
         private bool isBalanceEnough(decimal balance, decimal amount)
         {
@@ -204,6 +214,11 @@ namespace ReadifyBank
             } else {
                 return true;
             }
+        }
+
+        private IEnumerable<IStatementRow> getAllTransactionsOfOneAccount(IAccount account)
+        {
+            return transactionLog.Where(transaction => transaction.Account == account);
         }
 
     }

@@ -33,7 +33,7 @@ namespace ReadifyBank.UnitTest
             Assert.NotEmpty(test_bank.AccountList);
             Assert.Equal(1, test_bank.AccountList.Count);
 
-            //add another 19 saving accont
+            //add another 19 home loan accont
             foreach (int i in Enumerable.Range(1,19))
             {
                 test_bank.OpenHomeLoanAccount("LNCustomer", DateTimeOffset.Now.LocalDateTime);

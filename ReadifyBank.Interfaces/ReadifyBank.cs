@@ -226,6 +226,10 @@ namespace ReadifyBank
             int interestDays = (toDate - today).Days;
             if (interestDays >= 1)
             {
+                if (!isAccountExistInSystem(account))
+                {
+                    return 0m;
+                }
                 if (account.GetType() == typeof(LNAccount))
                 {
                     return LN_ANNUAL_INTEREST_RATE / 365 * interestDays * account.Balance;

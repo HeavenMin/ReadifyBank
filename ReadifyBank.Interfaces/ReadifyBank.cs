@@ -246,12 +246,16 @@ namespace ReadifyBank
             }
         }
 
-        //get mini statement (last 5 transactions occured one an account)
+        //get mini statement (last 5 transactions occured on an account)
         public IEnumerable<IStatementRow> GetMiniStatement(IAccount account)
         {
-            // TODO
-            // return getAllTransactionsOfOneAccount(account).ToList().TakeLast(5);
-            return getAllTransactionsOfOneAccount(account);
+            IEnumerable<IStatementRow> allTransactionsOfAccount = getAllTransactionsOfOneAccount(account);
+            if (allTransactionsOfAccount.Count() >= 5)
+            {
+                return allTransactionsOfAccount.Skip(Math.Max(0, allTransactionsOfAccount.Count() - 5));
+            } else {
+                return allTransactionsOfAccount;
+            }
         }
 
         //close an account and return all transactions happended on the closed account
@@ -296,17 +300,5 @@ namespace ReadifyBank
                 return false;
             }
         }
-
-        private bool isBalanceEnough(decimal balance, decimal amount)
-        {
-            if (balance < amount)
-            {
-                Console.Error.WriteLine("The balance is not enough.");
-                return false;
-            } else {
-                return true;
-            }
-        }
-
     }
 }

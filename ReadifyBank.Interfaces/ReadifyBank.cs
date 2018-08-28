@@ -82,7 +82,7 @@ namespace ReadifyBank
             StatementRow transaction = new StatementRow(account, amount, description);
             transactionLog.Add(transaction);
         }
-        
+
         public void PerformDeposit(IAccount account, decimal amount, string description, DateTimeOffset depositDate)
         {
             Account customerAccount = (Account) account;
@@ -221,6 +221,11 @@ namespace ReadifyBank
         private IEnumerable<IStatementRow> getAllTransactionsOfOneAccount(IAccount account)
         {
             return transactionLog.Where(transaction => transaction.Account == account);
+        }
+
+        private bool isNameValid(string customerName)
+        {
+            Regex reg = new Regex(@"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$")
         }
 
     }

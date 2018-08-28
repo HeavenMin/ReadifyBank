@@ -1,0 +1,14 @@
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\obj\Debug\netcoreapp2.1\ReadifyBank.ConsoleApp.csprojAssemblyReference.cache
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\obj\Debug\netcoreapp2.1\ReadifyBank.ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\obj\Debug\netcoreapp2.1\ReadifyBank.ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\obj\Debug\netcoreapp2.1\ReadifyBank.ConsoleApp.AssemblyInfo.cs
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\bin\Debug\netcoreapp2.1\ReadifyBank.ConsoleApp.deps.json
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\bin\Debug\netcoreapp2.1\ReadifyBank.ConsoleApp.runtimeconfig.json
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\bin\Debug\netcoreapp2.1\ReadifyBank.ConsoleApp.runtimeconfig.dev.json
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\bin\Debug\netcoreapp2.1\ReadifyBank.ConsoleApp.dll
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\bin\Debug\netcoreapp2.1\ReadifyBank.ConsoleApp.pdb
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\bin\Debug\netcoreapp2.1\ReadifyBank.Interfaces.dll
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\bin\Debug\netcoreapp2.1\ReadifyBank.Interfaces.pdb
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\obj\Debug\netcoreapp2.1\ReadifyBank.ConsoleApp.csproj.CopyComplete
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\obj\Debug\netcoreapp2.1\ReadifyBank.ConsoleApp.dll
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.ConsoleApp\obj\Debug\netcoreapp2.1\ReadifyBank.ConsoleApp.pdb

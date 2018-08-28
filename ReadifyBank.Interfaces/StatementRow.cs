@@ -12,7 +12,7 @@ using ReadifyBank.Interfaces;
 
 namespace ReadifyBank
 {
-    public class StatementRow : Interfaces.IStatementRow
+    class StatementRow : Interfaces.IStatementRow
     {
         private IAccount account;
         private DateTimeOffset date;    //Date and time of the transaction

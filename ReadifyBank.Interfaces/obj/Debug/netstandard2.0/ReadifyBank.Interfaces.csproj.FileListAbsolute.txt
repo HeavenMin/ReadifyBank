@@ -1,0 +1,9 @@
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.Interfaces\obj\Debug\netstandard2.0\ReadifyBank.Interfaces.csprojAssemblyReference.cache
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.Interfaces\obj\Debug\netstandard2.0\ReadifyBank.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.Interfaces\obj\Debug\netstandard2.0\ReadifyBank.Interfaces.AssemblyInfoInputs.cache
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.Interfaces\obj\Debug\netstandard2.0\ReadifyBank.Interfaces.AssemblyInfo.cs
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.Interfaces\bin\Debug\netstandard2.0\ReadifyBank.Interfaces.deps.json
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.Interfaces\bin\Debug\netstandard2.0\ReadifyBank.Interfaces.dll
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.Interfaces\bin\Debug\netstandard2.0\ReadifyBank.Interfaces.pdb
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.Interfaces\obj\Debug\netstandard2.0\ReadifyBank.Interfaces.dll
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.Interfaces\obj\Debug\netstandard2.0\ReadifyBank.Interfaces.pdb

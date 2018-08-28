@@ -2,7 +2,7 @@
   Author: Min Gao
   Date: 08/2018
   Versin: 1
-  File Name: Account.cs
+  File Name: ReadifyBank.cs
   Purpose: Readify Bank method
 */
 
@@ -187,7 +187,9 @@ namespace ReadifyBank
         //get mini statement (last 5 transactions occured one an account)
         public IEnumerable<IStatementRow> GetMiniStatement(IAccount account)
         {
-            return getAllTransactionsOfOneAccount(account).ToList().TakeLast(5);
+            // TODO
+            // return getAllTransactionsOfOneAccount(account).ToList().TakeLast(5);
+            return getAllTransactionsOfOneAccount(account);
         }
 
         //close an account and return all transactions happended on the closed account

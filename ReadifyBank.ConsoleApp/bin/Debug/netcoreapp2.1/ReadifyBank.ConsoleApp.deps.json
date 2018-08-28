@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "ReadifyBank.ConsoleApp/1.0.0": {
+        "dependencies": {
+          "ReadifyBank.Interfaces": "1.0.0"
+        },
+        "runtime": {
+          "ReadifyBank.ConsoleApp.dll": {}
+        }
+      },
+      "ReadifyBank.Interfaces/1.0.0": {
+        "runtime": {
+          "ReadifyBank.Interfaces.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ReadifyBank.ConsoleApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ReadifyBank.Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

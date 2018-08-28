@@ -1,0 +1,17 @@
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\bin\Debug\netcoreapp2.1\ReadifyBank.UnitTest.deps.json
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\bin\Debug\netcoreapp2.1\ReadifyBank.UnitTest.runtimeconfig.json
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\bin\Debug\netcoreapp2.1\ReadifyBank.UnitTest.runtimeconfig.dev.json
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\bin\Debug\netcoreapp2.1\ReadifyBank.UnitTest.dll
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\bin\Debug\netcoreapp2.1\ReadifyBank.UnitTest.pdb
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\bin\Debug\netcoreapp2.1\ReadifyBank.Interfaces.dll
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\bin\Debug\netcoreapp2.1\ReadifyBank.Interfaces.pdb
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\obj\Debug\netcoreapp2.1\ReadifyBank.UnitTest.csprojAssemblyReference.cache
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\obj\Debug\netcoreapp2.1\ReadifyBank.UnitTest.csproj.CoreCompileInputs.cache
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\obj\Debug\netcoreapp2.1\ReadifyBank.UnitTest.AssemblyInfoInputs.cache
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\obj\Debug\netcoreapp2.1\ReadifyBank.UnitTest.AssemblyInfo.cs
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\obj\Debug\netcoreapp2.1\ReadifyBank.UnitTest.csproj.CopyComplete
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\obj\Debug\netcoreapp2.1\ReadifyBank.UnitTest.dll
+C:\Users\heaven\Projects\ReadifyBank\ReadifyBank.UnitTest\obj\Debug\netcoreapp2.1\ReadifyBank.UnitTest.pdb

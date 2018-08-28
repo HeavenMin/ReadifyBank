@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/ReadifyBank.ConsoleApp/ReadifyBank.ConsoleApp.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "UnitTest",
+            "command": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/ReadifyBank.UnitTest/ReadifyBank.UnitTest.csproj"
+            ],
+            "group": "test",
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

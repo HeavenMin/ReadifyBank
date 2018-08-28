@@ -31,17 +31,15 @@ namespace ReadifyBank.UnitTest
             test_bank.PerformWithdrawal(john, 300, "withdrawal 300.");
             decimal johnBalanceAfterWithdrawal = john.Balance;
             Assert.Equal(johnBlanceBeforeWithdrawal, johnBalanceAfterWithdrawal);
+            Assert.Equal(1, test_bank.TransactionLog.Count);
 
-            
-
-
-
-            decimal johnBlanceBeforeDeposit = john.Balance;
-            decimal johnBalanceAfterDeposit = john.Balance;
-            Assert.Equal(johnBlanceBeforeDeposit + 200, johnBalanceAfterDeposit);
+            test_bank.PerformWithdrawal(john, 100, "withdrawal 100.");
+            johnBalanceAfterWithdrawal = john.Balance;
+            Assert.Equal(johnBlanceBeforeWithdrawal - 100, johnBalanceAfterWithdrawal);
             Assert.Same(john, test_bank.TransactionLog.Last().Account);
-            Assert.Equal(200, test_bank.TransactionLog.Last().Amount);
+            Assert.Equal(-100, test_bank.TransactionLog.Last().Amount);
             Assert.Equal(john.Balance, test_bank.TransactionLog.Last().Balance);
+            Assert.Equal(2, test_bank.TransactionLog.Count);
         }
     }
 }

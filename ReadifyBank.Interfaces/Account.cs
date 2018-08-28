@@ -64,8 +64,19 @@ namespace ReadifyBank
             }
         }
 
-        public void deposit(decimal amount) => this.balance += amount;
+        public void deposit(decimal amount)
+        {
+            this.balance += amount;
+        }
 
-        public void withdrawal(decimal amount) => this.balance -= amount;
+        public void withdrawal(decimal amount)
+        {
+            if (this.balance >= amount)
+            {
+                this.balance -= amount;
+            } else {
+                throw new ArgumentException("Withdrawal amount exceeds balance!");
+            }
+        }
     }
 }

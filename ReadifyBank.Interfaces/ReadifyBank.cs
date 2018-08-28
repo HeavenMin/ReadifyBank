@@ -128,31 +128,42 @@ namespace ReadifyBank
 
         public void PerformWithdrawal(IAccount account, decimal amount, string description)
         {
-            if (isBalanceEnough(account.Balance, amount))
+            if (!isAccountExistInSystem(account))
+            {
+                return;
+            }
+            try
             {
                 Account customerAccount = (Account) account;
                 customerAccount.withdrawal(amount);
-            } else {
-                Console.Error.WriteLine("Withdrawal failed.");
-                return;
-            }
-            StatementRow transaction = new StatementRow(account, -amount, description);
-            transactionLog.Add(transaction);
-        }
 
+                StatementRow transaction = new StatementRow(account, -amount, description);
+                transactionLog.Add(transaction);
+            }
+            catch (ArgumentException)
+            {
+                Console.Error.WriteLine("Withdrawal amount exceeds balance!");
+            }
+        }
 
         public void PerformWithdrawal(IAccount account, decimal amount, string description, DateTimeOffset withdrawalDate)
         {
-            if (isBalanceEnough(account.Balance, amount))
+            if (!isAccountExistInSystem(account))
+            {
+                return;
+            }
+            try
             {
                 Account customerAccount = (Account) account;
                 customerAccount.withdrawal(amount);
-            } else {
-                Console.Error.WriteLine("Withdrawal failed.");
-                return;
+
+                StatementRow transaction = new StatementRow(account, -amount, description, withdrawalDate);
+                transactionLog.Add(transaction);
             }
-            StatementRow transaction = new StatementRow(account, -amount, description, withdrawalDate);
-            transactionLog.Add(transaction);
+            catch (ArgumentException)
+            {
+                Console.Error.WriteLine("Withdrawal amount exceeds balance!");
+            }
         }
 
         public void PerformTransfer(IAccount from, IAccount to, decimal amount, string description)
@@ -242,17 +253,6 @@ namespace ReadifyBank
             return all_transactions;
         }
 
-        private bool isBalanceEnough(decimal balance, decimal amount)
-        {
-            if (balance < amount)
-            {
-                Console.Error.WriteLine("The balance is not enough.");
-                return false;
-            } else {
-                return true;
-            }
-        }
-
         private IEnumerable<IStatementRow> getAllTransactionsOfOneAccount(IAccount account)
         {
             return transactionLog.Where(transaction => transaction.Account == account);
@@ -278,6 +278,17 @@ namespace ReadifyBank
             } else {
                 Console.Error.WriteLine("This account does not exist in our system.");
                 return false;
+            }
+        }
+
+        private bool isBalanceEnough(decimal balance, decimal amount)
+        {
+            if (balance < amount)
+            {
+                Console.Error.WriteLine("The balance is not enough.");
+                return false;
+            } else {
+                return true;
             }
         }
 

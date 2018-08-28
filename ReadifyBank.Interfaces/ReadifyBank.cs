@@ -94,23 +94,35 @@ namespace ReadifyBank
 
         public void PerformDeposit(IAccount account, decimal amount, string description)
         {
+            if (!isAccountExistInSystem(account))
+            {
+                return;
+            }
             if (amount > 0)
             {
                 Account customerAccount = (Account) account;
                 customerAccount.deposit(amount);
                 StatementRow transaction = new StatementRow(account, amount, description);
                 transactionLog.Add(transaction);
+            } else {
+                Console.Error.WriteLine("Amount less than or equal to 0. Invalid amount.");
             }
         }
 
         public void PerformDeposit(IAccount account, decimal amount, string description, DateTimeOffset depositDate)
         {
+            if (!isAccountExistInSystem(account))
+            {
+                return;
+            }
             if (amount > 0)
             {
                 Account customerAccount = (Account) account;
                 customerAccount.deposit(amount);
                 StatementRow transaction = new StatementRow(account, amount, description, depositDate);
                 transactionLog.Add(transaction);
+            } else {
+                Console.Error.WriteLine("Amount less than or equal to 0. Invalid amount.");
             }
         }
 
@@ -254,6 +266,17 @@ namespace ReadifyBank
                 return true;
             } else {
                 Console.Error.WriteLine("Invalid customer name.");
+                return false;
+            }
+        }
+
+        private bool isAccountExistInSystem(IAccount account)
+        {
+            if (accountList.Contains(account))
+            {
+                return true;
+            } else {
+                Console.Error.WriteLine("This account does not exist in our system.");
                 return false;
             }
         }

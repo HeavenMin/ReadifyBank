@@ -94,18 +94,24 @@ namespace ReadifyBank
 
         public void PerformDeposit(IAccount account, decimal amount, string description)
         {
-            Account customerAccount = (Account) account;
-            customerAccount.deposit(amount);
-            StatementRow transaction = new StatementRow(account, amount, description);
-            transactionLog.Add(transaction);
+            if (amount > 0)
+            {
+                Account customerAccount = (Account) account;
+                customerAccount.deposit(amount);
+                StatementRow transaction = new StatementRow(account, amount, description);
+                transactionLog.Add(transaction);
+            }
         }
 
         public void PerformDeposit(IAccount account, decimal amount, string description, DateTimeOffset depositDate)
         {
-            Account customerAccount = (Account) account;
-            customerAccount.deposit(amount);
-            StatementRow transaction = new StatementRow(account, amount, description, depositDate);
-            transactionLog.Add(transaction);
+            if (amount > 0)
+            {
+                Account customerAccount = (Account) account;
+                customerAccount.deposit(amount);
+                StatementRow transaction = new StatementRow(account, amount, description, depositDate);
+                transactionLog.Add(transaction);
+            }
         }
 
         public void PerformWithdrawal(IAccount account, decimal amount, string description)

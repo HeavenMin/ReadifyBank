@@ -23,8 +23,8 @@ namespace ReadifyBank.ConsoleApp
             IAccount jack = bank.OpenHomeLoanAccount("Jack");
             foreach (int i in Enumerable.Range(1,9))
             {
-                bank.OpenSavingsAccount(string.Format("SCVustomer{0}", i));
-                bank.OpenHomeLoanAccount(string.Format("LNCustomer{0}", i));
+                bank.OpenSavingsAccount("SCVustomer");
+                bank.OpenHomeLoanAccount("LNCustomer");
             }
             Console.WriteLine(string.Format("Total account number: {0}\n", bank.AccountList.Count));
             showCustomerInfo(john, bank);

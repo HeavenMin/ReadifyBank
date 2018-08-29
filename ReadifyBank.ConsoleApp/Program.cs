@@ -58,10 +58,6 @@ namespace ReadifyBank.ConsoleApp
             showCustomerInfo(john, bank);
             showCustomerInfo(jack, bank);
 
-            bank.PerformWithdrawal(jack, 500, "withdarw 500.");
-
-            Console.WriteLine("finish.");
-
         }
 
         private static void showCustomerInfo(IAccount account, ReadifyBank bank)

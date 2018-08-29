@@ -216,7 +216,10 @@ namespace ReadifyBank
 
         public decimal GetBalance(IAccount account)
         {
-            return account.Balance;
+            if (isAccountExistInSystem(account)){
+                return account.Balance;
+            }
+            return -1;
         }
 
         //calculate interest for an account to a specific time
@@ -276,8 +279,6 @@ namespace ReadifyBank
             }
             IEnumerable<IStatementRow> all_transactions = getAllTransactionsOfOneAccount(account);
             accountList.Remove(account);
-            //For the privacy and security of the customer, clear all the information of the customer after closing the account.
-            account = null;
             return all_transactions;
         }
 
@@ -295,8 +296,6 @@ namespace ReadifyBank
             }
             IEnumerable<IStatementRow> all_transactions = getAllTransactionsOfOneAccount(account);
             accountList.Remove(account);
-            //For the privacy and security of the customer, clear all the information of the customer after closing the account.
-            account = null;
             return all_transactions;
         }
 

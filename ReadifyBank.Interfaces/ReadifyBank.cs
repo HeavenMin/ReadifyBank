@@ -174,15 +174,15 @@ namespace ReadifyBank
             }
             try
             {
-                Account from_account = (Account) from;
-                from_account.withdrawal(amount);
-                Account to_account = (Account) to;
-                to_account.deposit(amount);
+                Account fromAccount = (Account) from;
+                fromAccount.withdrawal(amount);
+                Account toAccount = (Account) to;
+                toAccount.deposit(amount);
 
-                StatementRow from_transaction = new StatementRow(from, -amount, description);
-                StatementRow to_transaction = new StatementRow(to, amount, description);
-                transactionLog.Add(from_transaction);
-                transactionLog.Add(to_transaction);
+                StatementRow fromTransaction = new StatementRow(from, -amount, description);
+                StatementRow toTransaction = new StatementRow(to, amount, description);
+                transactionLog.Add(fromTransaction);
+                transactionLog.Add(toTransaction);
             }
             catch (ArgumentException)
             {
@@ -198,15 +198,15 @@ namespace ReadifyBank
             }
             try
             {
-                Account from_account = (Account) from;
-                from_account.withdrawal(amount);
-                Account to_account = (Account) to;
-                to_account.deposit(amount);
+                Account fromAccount = (Account) from;
+                fromAccount.withdrawal(amount);
+                Account toAccount = (Account) to;
+                toAccount.deposit(amount);
 
-                StatementRow from_transaction = new StatementRow(from, -amount, description, transferDate);
-                StatementRow to_transaction = new StatementRow(to, amount, description, transferDate);
-                transactionLog.Add(from_transaction);
-                transactionLog.Add(to_transaction);
+                StatementRow fromTransaction = new StatementRow(from, -amount, description, transferDate);
+                StatementRow toTransaction = new StatementRow(to, amount, description, transferDate);
+                transactionLog.Add(fromTransaction);
+                transactionLog.Add(toTransaction);
             }
             catch (ArgumentException)
             {
@@ -274,12 +274,12 @@ namespace ReadifyBank
             }
             if (account.Balance > 0)
             {
-                string final_withdrawal_description = "Withdraw all the money before closing the account";
-                PerformWithdrawal(account, account.Balance, final_withdrawal_description);
+                string finalWithdrawalDescription = "Withdraw all the money before closing the account";
+                PerformWithdrawal(account, account.Balance, finalWithdrawalDescription);
             }
-            IEnumerable<IStatementRow> all_transactions = getAllTransactionsOfOneAccount(account);
+            IEnumerable<IStatementRow> allTransactions = getAllTransactionsOfOneAccount(account);
             accountList.Remove(account);
-            return all_transactions;
+            return allTransactions;
         }
 
         //close an account and return all transactions happended on the closed account
@@ -291,12 +291,12 @@ namespace ReadifyBank
             }
             if (account.Balance > 0)
             {
-                string final_withdrawal_description = "Withdraw all the money before closing the account";
-                PerformWithdrawal(account, account.Balance, final_withdrawal_description, closeDate);
+                string finalWithdrawalDescription = "Withdraw all the money before closing the account";
+                PerformWithdrawal(account, account.Balance, finalWithdrawalDescription, closeDate);
             }
-            IEnumerable<IStatementRow> all_transactions = getAllTransactionsOfOneAccount(account);
+            IEnumerable<IStatementRow> allTransactions = getAllTransactionsOfOneAccount(account);
             accountList.Remove(account);
-            return all_transactions;
+            return allTransactions;
         }
 
         private IEnumerable<IStatementRow> getAllTransactionsOfOneAccount(IAccount account)

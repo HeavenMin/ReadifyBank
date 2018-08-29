@@ -21,6 +21,9 @@ namespace ReadifyBank
         private const decimal SV_MONTHLY_INTEREST_RATE = 0.06m;
         // The interest rate for Home loan account is 3.99% annually
         private const decimal LN_ANNUAL_INTEREST_RATE = 0.0399m;
+        private const int MINI_STATEMENT_NUM = 5;
+        private const int DAYS_IN_A_YEAR = 365;
+        private const int MONTHS_IN_A_YEAR = 12;
 
         private IList<IAccount> accountList;    //bank accounts list
         private IList<IStatementRow> transactionLog;    //transactions log of bank
@@ -231,21 +234,21 @@ namespace ReadifyBank
             {
                 if (!isAccountExistInSystem(account))
                 {
-                    return 0m;
+                    return -1;
                 }
                 if (account.GetType() == typeof(LNAccount))
                 {
-                    return LN_ANNUAL_INTEREST_RATE / 365 * interestDays * account.Balance;
+                    return LN_ANNUAL_INTEREST_RATE / DAYS_IN_A_YEAR * interestDays * account.Balance;
                 } else if (account.GetType() == typeof(SVAccount))
                 {
-                    return SV_MONTHLY_INTEREST_RATE * 12 / 365 * interestDays * account.Balance;
+                    return SV_MONTHLY_INTEREST_RATE * MONTHS_IN_A_YEAR / DAYS_IN_A_YEAR * interestDays * account.Balance;
                 } else {
                     Console.Error.WriteLine("Invalid account.");
-                    return 0m;
+                    return -1;
                 }
             } else {
                 Console.Error.WriteLine("Invalid date.");
-                return 0m;
+                return -1;
             }
         }
 
@@ -257,9 +260,9 @@ namespace ReadifyBank
                 return null;
             }
             IEnumerable<IStatementRow> allTransactionsOfAccount = getAllTransactionsOfOneAccount(account);
-            if (allTransactionsOfAccount.Count() >= 5)
+            if (allTransactionsOfAccount.Count() >= MINI_STATEMENT_NUM)
             {
-                return allTransactionsOfAccount.Skip(Math.Max(0, allTransactionsOfAccount.Count() - 5));
+                return allTransactionsOfAccount.Skip(Math.Max(0, allTransactionsOfAccount.Count() - MINI_STATEMENT_NUM));
             } else {
                 return allTransactionsOfAccount;
             }

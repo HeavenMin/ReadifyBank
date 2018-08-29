@@ -28,8 +28,8 @@ namespace ReadifyBank.UnitTest
             DateTimeOffset invalidToDate = DateTimeOffset.Now.LocalDateTime.AddDays(-60);
             decimal interestForJohn = testBank.CalculateInterestToDate(john, invalidToDate);
             decimal interestForJack = testBank.CalculateInterestToDate(jack, invalidToDate);
-            Assert.Equal(0m, interestForJohn);
-            Assert.Equal(0m, interestForJack);
+            Assert.Equal(-1, interestForJohn);
+            Assert.Equal(-1, interestForJack);
 
             const int ADD_DAYS = 60;
             DateTimeOffset toDate = DateTimeOffset.Now.LocalDateTime.AddDays(ADD_DAYS);
@@ -41,7 +41,7 @@ namespace ReadifyBank.UnitTest
             Assert.True(SVInterestRate - 0.06m < 0.0001m);
 
             decimal interestForNull = testBank.CalculateInterestToDate(null, toDate);
-            Assert.Equal(0m, interestForNull);
+            Assert.Equal(-1, interestForNull);
         }
     }
 }

@@ -86,7 +86,7 @@ namespace ReadifyBank.ConsoleApp
             {
                 showTransactionInfo(transaction, bank);
             }
-
+            
         }
 
         private static void showCustomerInfo(IAccount account, ReadifyBank bank)

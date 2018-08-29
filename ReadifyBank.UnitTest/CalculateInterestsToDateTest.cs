@@ -25,12 +25,14 @@ namespace ReadifyBank.UnitTest
             IAccount jack = testBank.OpenSavingsAccount("jack");
             testBank.PerformDeposit(jack, 1000, "deposit 1000.");
 
+            // Test for invalid toDate
             DateTimeOffset invalidToDate = DateTimeOffset.Now.LocalDateTime.AddDays(-60);
             decimal interestForJohn = testBank.CalculateInterestToDate(john, invalidToDate);
             decimal interestForJack = testBank.CalculateInterestToDate(jack, invalidToDate);
             Assert.Equal(-1, interestForJohn);
             Assert.Equal(-1, interestForJack);
 
+            // Test for valid toDate
             const int ADD_DAYS = 60;
             DateTimeOffset toDate = DateTimeOffset.Now.LocalDateTime.AddDays(ADD_DAYS);
             interestForJohn = testBank.CalculateInterestToDate(john, toDate);
@@ -40,6 +42,7 @@ namespace ReadifyBank.UnitTest
             decimal SVInterestRate = interestForJack * 365 / 12 / ADD_DAYS / 1000;
             Assert.True(SVInterestRate - 0.06m < 0.0001m);
 
+            // Test for invalid account
             decimal interestForNull = testBank.CalculateInterestToDate(null, toDate);
             Assert.Equal(-1, interestForNull);
         }

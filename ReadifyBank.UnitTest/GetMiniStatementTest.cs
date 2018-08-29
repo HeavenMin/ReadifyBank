@@ -21,12 +21,15 @@ namespace ReadifyBank.UnitTest
         public void TestGetMiniStatement()
         {
             ReadifyBank testBank = new ReadifyBank();
+
+            // Test for an account only have one transaction
             IAccount jill = testBank.OpenHomeLoanAccount("Jill");
             testBank.PerformDeposit(jill, 100, "deposit 100.");
             IEnumerable<IStatementRow> miniStatementForJill = testBank.GetMiniStatement(jill);
             Assert.Equal(1, miniStatementForJill.Count());
             Assert.Equal(100, miniStatementForJill.ToList()[0].Balance);
 
+            // Test normal circumstances
             IAccount john = testBank.OpenHomeLoanAccount("John");
             IAccount jack = testBank.OpenSavingsAccount("Jack");
             foreach (int i in Enumerable.Range(1,20))
@@ -47,6 +50,7 @@ namespace ReadifyBank.UnitTest
                 Assert.Equal(johnBalance, miniStatementForJohn.ToList()[i].Balance);
             }
 
+            // Test for invalid account
             IEnumerable<IStatementRow> miniStatementForNotExist = testBank.GetMiniStatement(null);
             Assert.Null(miniStatementForNotExist);
 

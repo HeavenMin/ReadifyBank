@@ -21,10 +21,12 @@ namespace ReadifyBank.UnitTest
         {
             ReadifyBank testBank = new ReadifyBank();
 
+            // Test for invalid customer name
             IAccount invalidName = testBank.OpenSavingsAccount("John123");
             Assert.Null(invalidName);
             Assert.Empty(testBank.AccountList);
 
+            // Test for valid saving account customer
             IAccount john = testBank.OpenSavingsAccount("John");
             Assert.Equal("John", john.CustomerName);
             Assert.Equal(0, john.Balance);
@@ -33,7 +35,7 @@ namespace ReadifyBank.UnitTest
             Assert.NotEmpty(testBank.AccountList);
             Assert.Equal(1, testBank.AccountList.Count);
 
-            //add another 19 saving accont
+            // Add another 19 saving accont
             foreach (int i in Enumerable.Range(1,19))
             {
                 testBank.OpenSavingsAccount("SVCustomer", DateTimeOffset.Now.LocalDateTime);

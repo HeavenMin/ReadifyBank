@@ -21,14 +21,17 @@ namespace ReadifyBank.UnitTest
         {
             ReadifyBank testBank = new ReadifyBank();
 
+            // Test for invalid account
             testBank.PerformDeposit(null, 200, "deposit 200.");
             Assert.Equal(0, testBank.TransactionLog.Count);
-
+            
+            // Test for invalid deposit amount
             IAccount john = testBank.OpenHomeLoanAccount("John");
             testBank.PerformDeposit(john, -200, "invalid deposit.");
             Assert.Equal(0, john.Balance);
             Assert.Equal(0, testBank.TransactionLog.Count);
 
+            // Test for nomal circumstances
             testBank.PerformDeposit(john, 200, "deposit 200.");
             Assert.Equal(200, john.Balance);
             Assert.Same(john, testBank.TransactionLog.Last().Account);

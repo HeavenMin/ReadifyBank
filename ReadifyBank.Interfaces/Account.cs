@@ -13,7 +13,7 @@ namespace ReadifyBank
 {
     class Account: Interfaces.IAccount
     {
-        private DateTimeOffset openedDate;    //the date when the account was opened
+        private DateTimeOffset openedDate;    // The date when the account was opened
         private string customerName;
         protected string accountNumber;
         private decimal balance;    // Current account balance
@@ -22,7 +22,7 @@ namespace ReadifyBank
         {
             this.customerName = customerName;
             this.balance = 0;
-            this.openedDate = DateTimeOffset.Now.LocalDateTime;    //Local time when opening an account
+            this.openedDate = DateTimeOffset.Now.LocalDateTime;    // Local time when opening an account
         }
 
         public Account(string customerName, DateTimeOffset openedDate)

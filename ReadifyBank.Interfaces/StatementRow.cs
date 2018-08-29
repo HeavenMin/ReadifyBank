@@ -15,7 +15,7 @@ namespace ReadifyBank
     class StatementRow : Interfaces.IStatementRow
     {
         private IAccount account;
-        private DateTimeOffset date;    //Date and time of the transaction
+        private DateTimeOffset date;    // Date and time of the transaction
         private decimal amount;
         private decimal balance;
         private string description;
@@ -25,7 +25,7 @@ namespace ReadifyBank
             this.account = account;
             this.amount = amount;
             this.description = description;
-            this.balance = account.Balance;    // balance after deposit or withdrawal
+            this.balance = account.Balance;    // Balance after deposit or withdrawal
             this.date = DateTimeOffset.Now.LocalDateTime;
 
         }

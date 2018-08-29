@@ -20,6 +20,7 @@ namespace ReadifyBank.UnitTest
         [Fact]
         public void TestCloseAccount()
         {
+            // Add two account
             ReadifyBank testBank = new ReadifyBank();
             IAccount john = testBank.OpenHomeLoanAccount("John");
             IAccount jack = testBank.OpenSavingsAccount("jack");
@@ -30,11 +31,22 @@ namespace ReadifyBank.UnitTest
                 testBank.PerformDeposit(jack, depositAmount, string.Format("deposit {0}.", depositAmount));
             }
 
-            IEnumerable<IStatementRow> allJackTransactions =  testBank.CloseAccount(john);
+            // Test for close account jack
+            IEnumerable<IStatementRow> allJackTransactions =  testBank.CloseAccount(jack);
             Assert.Equal(1, testBank.AccountList.Count);
             Assert.Equal(-21000, testBank.TransactionLog.Last().Amount);
             Assert.Equal(0, testBank.TransactionLog.Last().Balance);
             foreach (IStatementRow transaction in allJackTransactions)
+            {
+                Assert.Same(jack, transaction.Account);
+            }
+
+            // Test for close account john
+            IEnumerable<IStatementRow> allJohnTransactions =  testBank.CloseAccount(john);
+            Assert.Equal(0, testBank.AccountList.Count);
+            Assert.Equal(-21000, testBank.TransactionLog.Last().Amount);
+            Assert.Equal(0, testBank.TransactionLog.Last().Balance);
+            foreach (IStatementRow transaction in allJohnTransactions)
             {
                 Assert.Same(john, transaction.Account);
             }

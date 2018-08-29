@@ -25,8 +25,8 @@ namespace ReadifyBank
         private const int DAYS_IN_A_YEAR = 365;
         private const int MONTHS_IN_A_YEAR = 12;
 
-        private IList<IAccount> accountList;    //bank accounts list
-        private IList<IStatementRow> transactionLog;    //transactions log of bank
+        private IList<IAccount> accountList;    // Bank accounts list
+        private IList<IStatementRow> transactionLog;    // Transactions log of bank
 
         public ReadifyBank()
         {
@@ -225,7 +225,7 @@ namespace ReadifyBank
             return -1;
         }
 
-        //calculate interest for an account to a specific time
+        // Calculate interest for an account to a specific time
         public decimal CalculateInterestToDate(IAccount account, DateTimeOffset toDate)
         {
             DateTimeOffset today = DateTimeOffset.Now.Date;
@@ -252,7 +252,7 @@ namespace ReadifyBank
             }
         }
 
-        //get mini statement (last 5 transactions occured on an account)
+        // Get mini statement (last 5 transactions occured on an account)
         public IEnumerable<IStatementRow> GetMiniStatement(IAccount account)
         {
             if (!isAccountExistInSystem(account))
@@ -268,7 +268,7 @@ namespace ReadifyBank
             }
         }
 
-        //close an account and return all transactions happended on the closed account
+        // Close an account and return all transactions happended on the closed account
         public IEnumerable<IStatementRow> CloseAccount(IAccount account)
         {
             if (!isAccountExistInSystem(account))
@@ -285,7 +285,7 @@ namespace ReadifyBank
             return allTransactions;
         }
 
-        //close an account and return all transactions happended on the closed account
+        // Close an account and return all transactions happended on the closed account
         public IEnumerable<IStatementRow> CloseAccount(IAccount account, DateTimeOffset closeDate)
         {
             if (!isAccountExistInSystem(account))

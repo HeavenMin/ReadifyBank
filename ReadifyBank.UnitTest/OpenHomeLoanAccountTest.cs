@@ -19,26 +19,26 @@ namespace ReadifyBank.UnitTest
         [Fact]
         public void TestOpenHomeLoanAccount()
         {
-            ReadifyBank test_bank = new ReadifyBank();
+            ReadifyBank testBank = new ReadifyBank();
 
-            IAccount invalidName = test_bank.OpenHomeLoanAccount("John123");
+            IAccount invalidName = testBank.OpenHomeLoanAccount("John123");
             Assert.Null(invalidName);
-            Assert.Empty(test_bank.AccountList);
+            Assert.Empty(testBank.AccountList);
 
-            IAccount john = test_bank.OpenHomeLoanAccount("John");
+            IAccount john = testBank.OpenHomeLoanAccount("John");
             Assert.Equal("John", john.CustomerName);
             Assert.Equal(0, john.Balance);
             Assert.StartsWith("LN-", john.AccountNumber);
             Assert.Matches("^LN-\\d{6}$", john.AccountNumber);
-            Assert.NotEmpty(test_bank.AccountList);
-            Assert.Equal(1, test_bank.AccountList.Count);
+            Assert.NotEmpty(testBank.AccountList);
+            Assert.Equal(1, testBank.AccountList.Count);
 
             //add another 19 home loan accont
             foreach (int i in Enumerable.Range(1,19))
             {
-                test_bank.OpenHomeLoanAccount("LNCustomer", DateTimeOffset.Now.LocalDateTime);
+                testBank.OpenHomeLoanAccount("LNCustomer", DateTimeOffset.Now.LocalDateTime);
             }
-            Assert.Equal(20, test_bank.AccountList.Count);
+            Assert.Equal(20, testBank.AccountList.Count);
         }
     }
 }

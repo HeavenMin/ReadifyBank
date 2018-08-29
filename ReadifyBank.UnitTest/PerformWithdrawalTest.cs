@@ -19,24 +19,24 @@ namespace ReadifyBank.UnitTest
         [Fact]
         public void TestPerformWithdrawal()
         {
-            ReadifyBank test_bank = new ReadifyBank();
+            ReadifyBank testBank = new ReadifyBank();
 
-            test_bank.PerformWithdrawal(null, 200, "withdrawwal 200.");
-            Assert.Equal(0, test_bank.TransactionLog.Count);
+            testBank.PerformWithdrawal(null, 200, "withdrawwal 200.");
+            Assert.Equal(0, testBank.TransactionLog.Count);
 
-            IAccount john = test_bank.OpenHomeLoanAccount("John");
-            test_bank.PerformDeposit(john, 200, "deposit 200.");
+            IAccount john = testBank.OpenHomeLoanAccount("John");
+            testBank.PerformDeposit(john, 200, "deposit 200.");
 
-            test_bank.PerformWithdrawal(john, 300, "withdrawal 300.");
+            testBank.PerformWithdrawal(john, 300, "withdrawal 300.");
             Assert.Equal(200, john.Balance);
-            Assert.Equal(1, test_bank.TransactionLog.Count);
+            Assert.Equal(1, testBank.TransactionLog.Count);
 
-            test_bank.PerformWithdrawal(john, 100, "withdrawal 100.");
+            testBank.PerformWithdrawal(john, 100, "withdrawal 100.");
             Assert.Equal(100, john.Balance);
-            Assert.Same(john, test_bank.TransactionLog.Last().Account);
-            Assert.Equal(-100, test_bank.TransactionLog.Last().Amount);
-            Assert.Equal(john.Balance, test_bank.TransactionLog.Last().Balance);
-            Assert.Equal(2, test_bank.TransactionLog.Count);
+            Assert.Same(john, testBank.TransactionLog.Last().Account);
+            Assert.Equal(-100, testBank.TransactionLog.Last().Amount);
+            Assert.Equal(john.Balance, testBank.TransactionLog.Last().Balance);
+            Assert.Equal(2, testBank.TransactionLog.Count);
         }
     }
 }

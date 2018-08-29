@@ -19,23 +19,23 @@ namespace ReadifyBank.UnitTest
         [Fact]
         public void TestPerformTransfer()
         {
-            ReadifyBank test_bank = new ReadifyBank();
-            IAccount john = test_bank.OpenHomeLoanAccount("John");
-            IAccount jack = test_bank.OpenSavingsAccount("Jack");
-            test_bank.PerformDeposit(john, 200, "deposit 200.");
+            ReadifyBank testBank = new ReadifyBank();
+            IAccount john = testBank.OpenHomeLoanAccount("John");
+            IAccount jack = testBank.OpenSavingsAccount("Jack");
+            testBank.PerformDeposit(john, 200, "deposit 200.");
 
-            test_bank.PerformTransfer(john, null, 100, "Tranfer 100.");
+            testBank.PerformTransfer(john, null, 100, "Tranfer 100.");
             Assert.Equal(200, john.Balance);
-            Assert.Equal(1, test_bank.TransactionLog.Count);
+            Assert.Equal(1, testBank.TransactionLog.Count);
 
-            test_bank.PerformTransfer(null, john, 100, "Tranfer 100");
+            testBank.PerformTransfer(null, john, 100, "Tranfer 100");
             Assert.Equal(200, john.Balance);
-            Assert.Equal(1, test_bank.TransactionLog.Count);
+            Assert.Equal(1, testBank.TransactionLog.Count);
 
-            test_bank.PerformTransfer(john, jack, 100, "Tranfer 100 to jack.");
+            testBank.PerformTransfer(john, jack, 100, "Tranfer 100 to jack.");
             Assert.Equal(100, john.Balance);
             Assert.Equal(100, jack.Balance);
-            Assert.Equal(3, test_bank.TransactionLog.Count);
+            Assert.Equal(3, testBank.TransactionLog.Count);
         }
     }
 }

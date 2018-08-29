@@ -19,28 +19,28 @@ namespace ReadifyBank.UnitTest
         [Fact]
         public void TestCalculateInterestToDate()
         {
-            ReadifyBank test_bank = new ReadifyBank();
-            IAccount john = test_bank.OpenHomeLoanAccount("John");
-            test_bank.PerformDeposit(john, 1000, "deposit 1000.");
-            IAccount jack = test_bank.OpenSavingsAccount("jack");
-            test_bank.PerformDeposit(jack, 1000, "deposit 1000.");
+            ReadifyBank testBank = new ReadifyBank();
+            IAccount john = testBank.OpenHomeLoanAccount("John");
+            testBank.PerformDeposit(john, 1000, "deposit 1000.");
+            IAccount jack = testBank.OpenSavingsAccount("jack");
+            testBank.PerformDeposit(jack, 1000, "deposit 1000.");
 
             DateTimeOffset invalidToDate = DateTimeOffset.Now.LocalDateTime.AddDays(-60);
-            decimal interestForJohn = test_bank.CalculateInterestToDate(john, invalidToDate);
-            decimal interestForJack = test_bank.CalculateInterestToDate(jack, invalidToDate);
+            decimal interestForJohn = testBank.CalculateInterestToDate(john, invalidToDate);
+            decimal interestForJack = testBank.CalculateInterestToDate(jack, invalidToDate);
             Assert.Equal(0m, interestForJohn);
             Assert.Equal(0m, interestForJack);
 
             const int ADD_DAYS = 60;
             DateTimeOffset toDate = DateTimeOffset.Now.LocalDateTime.AddDays(ADD_DAYS);
-            interestForJohn = test_bank.CalculateInterestToDate(john, toDate);
+            interestForJohn = testBank.CalculateInterestToDate(john, toDate);
             decimal LNInterestRate = interestForJohn * 365 / ADD_DAYS / 1000;
             Assert.True(LNInterestRate - 0.0399m < 0.0001m);
-            interestForJack = test_bank.CalculateInterestToDate(jack, toDate);
+            interestForJack = testBank.CalculateInterestToDate(jack, toDate);
             decimal SVInterestRate = interestForJack * 365 / 12 / ADD_DAYS / 1000;
             Assert.True(SVInterestRate - 0.06m < 0.0001m);
 
-            decimal interestForNull = test_bank.CalculateInterestToDate(null, toDate);
+            decimal interestForNull = testBank.CalculateInterestToDate(null, toDate);
             Assert.Equal(0m, interestForNull);
         }
     }

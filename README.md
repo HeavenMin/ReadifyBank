@@ -1,8 +1,5 @@
 # ReadifyBank
 
-Author: `Min Gao`  
-E-mail: heavengaomin@gmail.com
-
 ```
 ReadifyBank.Interfaces -- ReadifyBank.UnitTest  
                        \_ ReadifyBank.ConsoleApp
